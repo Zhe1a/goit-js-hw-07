@@ -1,33 +1,20 @@
 import { galleryItems } from './gallery-items.js';
-// Change code below this line
+// Change code below this line ${description}
+
 const div = document.querySelector(".gallery");
-const img = galleryy(galleryItems)
+const img =galleryItems
+.map(({preview, description, original})=>
+`<div><a class="gallery__item" href="${original}">
+<img class="gallery__image" src="${preview}" alt="${description}" />
+</a>
+</div>`
+  ).join("");
 
+  div.insertAdjacentHTML("beforeend",img);
 
-function galleryy(params) {
-    return params.map(({preview, description, original})=>
-    `<div class="gallery__item">
-    <a class="gallery__link" href="#">
-      <img
-        class="gallery__image"
-        src="${preview}"
-        data-source="${original}"
-        alt="${description}"
-      />
-    </a>
-  </div>`
-  ).join(" ")};
-  function galleryClick(evt){
-    const isGalleryClick = evt.target.classList.contains("gallery__image");
-    if(!isGalleryClick){
-      return 
-    }
-    
-    const data = evt.target.dataset.source;
-    var lightbox = $('.gallery a').simpleLightbox({ 
-  
+  new SimpleLightbox('.gallery a', {
+    captions: true,
+    captionsData: 'alt',
+    captionDelay: 250,
+  });
 
-     });
-    }
-    div.addEventListener("click",galleryClick)
-  div.insertAdjacentHTML("beforeend",img)
