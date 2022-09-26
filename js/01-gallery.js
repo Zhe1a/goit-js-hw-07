@@ -27,14 +27,16 @@ if(!isGalleryClick){
 const data = evt.target.dataset.source;
 const instance = basicLightbox.create(`
     <img src="${data}" width="800" height="600">
-`,
+`, 
 );
+
 instance.show();
-document.addEventListener("keydown", event => {
-  if(event.code === "Escape"){
-    instance.close();
-  }
-  });
+
+// document.addEventListener("keydown", event => {
+//   if(event.code === "Escape"){
+   //instance.close()
+//   }
+//   });
 };
 div.addEventListener("click",galleryClick);
 div.insertAdjacentHTML("beforeend",img);
